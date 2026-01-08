@@ -16,7 +16,14 @@ app.get('/search', async (req, res) => {
     }
 
     try {
-        const results = await hltbService.search(gameName);
+        const results = await hltbService.search(gameName, {
+    headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Referer': 'https://howlongtobeat.com/',
+        'Accept': '*/*',
+        'Origin': 'https://howlongtobeat.com'
+    }
+});
         res.json(results);
     } catch (error) {
         console.error(error);
